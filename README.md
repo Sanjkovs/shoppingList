@@ -1,4 +1,4 @@
 # shoppingList
 Java2 main project
 
-teacher name
+teacher name: Alex
