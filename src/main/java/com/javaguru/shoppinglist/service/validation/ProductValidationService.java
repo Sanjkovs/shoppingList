@@ -7,10 +7,11 @@ import java.util.Set;
 
 public class ProductValidationService {
 
-    private Set<ProductNameValidationRule> validationRules = new HashSet<>();
+    private Set<ProductValidationRule> validationRules = new HashSet<>();
 
     public ProductValidationService () {
         validationRules.add(new ProductNameValidationRule());
+        validationRules.add(new ProductPriceValidationRule());
     }
     public void validate (Product product){
         validationRules.forEach(s -> s.validate(product));

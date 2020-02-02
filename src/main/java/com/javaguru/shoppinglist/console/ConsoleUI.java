@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class ConsoleUI {
 
-    private ProductService productService = new ProductService();
+    public ProductService productService = new ProductService();
 
     public void execute() {
         while (true) {
@@ -29,26 +29,24 @@ public class ConsoleUI {
                         return;
                 }
             } catch (Exception e) {
-                System.out.println("Error! Please try again.");
+                System.out.println(e.getMessage());
             }
         }
 
     }
 
     private void createProduct() {
+//        productService.createProduct(product);
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter product name: ");
         String name = scanner.nextLine();
-
         System.out.println("Enter product price: ");
         BigDecimal price = new BigDecimal(scanner.nextLine());
-
         System.out.println("Enter product discount: ");
         BigDecimal discount = new BigDecimal(scanner.nextLine());
-
         System.out.println("Enter product category: ");
         String category = scanner.nextLine();
-
         System.out.println("Enter product description: ");
         String description = scanner.nextLine();
 
