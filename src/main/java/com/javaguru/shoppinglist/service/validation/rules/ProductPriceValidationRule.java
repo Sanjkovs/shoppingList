@@ -11,7 +11,7 @@ public class ProductPriceValidationRule implements ProductValidationRule {
     public void validate(Product product) {
         checkNotNull(product);
         if (product.getPrice().compareTo(BigDecimal.ZERO) < 0) {
-            throw new ProductValidationException("Price should be less than 0");
+            throw new ProductValidationException("Price should be more than 0");
         }
     }
 }
