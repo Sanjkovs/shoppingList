@@ -1,4 +1,4 @@
-package com.javaguru.shoppinglist;
+package com.javaguru.shoppinglist.domain;
 
 import java.math.BigDecimal;
 
@@ -59,4 +59,5 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }
