@@ -1,11 +1,14 @@
 package com.javaguru.shoppinglist.repository;
 
 import com.javaguru.shoppinglist.domain.Product;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
-public class ProductInShopRepository {
+@Component
+public class ProductInShopRepository implements ProductInShopRepositoryInterface{
 
     private Map<Long, Product> productRepository = new HashMap<Long, Product>();
     private Long productIdSequence = 0L;
@@ -15,6 +18,26 @@ public class ProductInShopRepository {
         productRepository.put(productIdSequence,product);
         productIdSequence++;
         return product;
+    }
+
+    @Override
+    public void delete(Product product) {
+
+    }
+
+    @Override
+    public Optional<Product> findProductById(Long id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean existsByName(String name) {
+        return false;
+    }
+
+    @Override
+    public Optional<Product> findProductByName(String name) {
+        return Optional.empty();
     }
 
     public Product findProductById (long id){

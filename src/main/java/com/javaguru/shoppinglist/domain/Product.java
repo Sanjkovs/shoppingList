@@ -12,6 +12,13 @@ public class Product {
     private BigDecimal discount;
     private String description;
 
+//    public Product (String name, BigDecimal price, BigDecimal discount, String description){
+//        this.name = name;
+//        this.price = price;
+//        this.discount = discount;
+//        this.description = description;
+//        id++;
+//    }
 
     public Long getId() {
         return id;
