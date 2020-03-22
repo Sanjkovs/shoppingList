@@ -2,13 +2,21 @@ package com.javaguru.shoppinglist.console;
 
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+@Component
 public class ConsoleUI {
 
-    private ProductService productService = new ProductService();
+    private final ProductService productService;
+
+    @Autowired
+    public ConsoleUI(ProductService productService) {
+        this.productService = productService;
+    }
 
     public void execute() {
         while (true) {
@@ -29,26 +37,24 @@ public class ConsoleUI {
                         return;
                 }
             } catch (Exception e) {
-                System.out.println("Error! Please try again.");
+                System.out.println(e.getMessage());
             }
         }
 
     }
 
     private void createProduct() {
+//        productService.createProduct(product);
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter product name: ");
         String name = scanner.nextLine();
-
         System.out.println("Enter product price: ");
         BigDecimal price = new BigDecimal(scanner.nextLine());
-
         System.out.println("Enter product discount: ");
         BigDecimal discount = new BigDecimal(scanner.nextLine());
-
         System.out.println("Enter product category: ");
         String category = scanner.nextLine();
-
         System.out.println("Enter product description: ");
         String description = scanner.nextLine();
 
@@ -63,11 +69,11 @@ public class ConsoleUI {
         System.out.println("ID: " + id);
     }
 
-    private void findProduct(){
+    private void findProduct() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter product id: ");
         Long id = scanner.nextLong();
-        Product findProductResult = productService.findProduct(id);
+        Product findProductResult = productService.findProductById(id);
         System.out.println(findProductResult);
     }
 }
