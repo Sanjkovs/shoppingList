@@ -1,16 +1,13 @@
 package com.javaguru.shoppinglist.service.validation.rules;
 
 import com.javaguru.shoppinglist.domain.Product;
-import com.javaguru.shoppinglist.repository.ProductInShopRepository;
 import com.javaguru.shoppinglist.service.validation.ProductValidationException;
 import com.javaguru.shoppinglist.service.validation.ProductValidationRule;
-
-import java.math.BigDecimal;
 
 public class ProductNameValidationRule implements ProductValidationRule {
     @Override
     public void validate(Product product) {
-//        ProductInShopRepository repository = new ProductInShopRepository();
+//        ProductRepository repository = new ProductRepository();
         checkNotNull(product);
         if (product.getName() == null || product.getName().trim().length() == 0 ) {
             throw new ProductValidationException("Product name must be not empty");
