@@ -1,7 +1,7 @@
 package com.javaguru.shoppinglist.service.validation;
 
 import com.javaguru.shoppinglist.domain.Product;
-import com.javaguru.shoppinglist.repository.ProductRepository;
+import com.javaguru.shoppinglist.repository.ProductInMemoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ public class ProductValidationService {
 
     private final Set<ProductValidationRule> validationRules;
 
-    private ProductRepository repository;
+    private ProductInMemoryRepository repository;
 
     @Autowired
     public ProductValidationService (Set<ProductValidationRule> validationRules){

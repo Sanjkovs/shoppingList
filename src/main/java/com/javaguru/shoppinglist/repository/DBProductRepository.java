@@ -29,6 +29,7 @@ public class DBProductRepository implements ProductRepositoryInterface{
     public Product insert(Product product) {
         String query = "insert into PRODUCT (name, price, category, discount, description, id) values (?,?,?,?,?,?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
+
         jdbcTemplate.update(connection ->  {
             PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, product.getName());

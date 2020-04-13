@@ -2,31 +2,40 @@ package com.javaguru.shoppinglist.domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
-@Table(name = "PRODUCT")
+@Table(name = "product")
 public class Product {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column (name = "name")
+    @Column(name = "name")
     private String name;
 
-    @Column (name = "price")
+    @Column(name = "price")
     private BigDecimal price;
 
-    @Column (name = "category")
+    @Column(name = "category")
     private String category;
 
-    @Column (name = "discount")
+    @Column(name = "discount")
     private BigDecimal discount;
 
-    @Column (name = "description")
+    @Column(name = "description")
     private String description;
+
+    @ManyToMany(mappedBy = "products")
+    private Set<User> users = new HashSet<>();
+
+
+//    @Column(name = "USER_ID")
+//    private int userId;
 
 //    public Product (String name, BigDecimal price, BigDecimal discount, String description){
 //        this.name = name;
@@ -82,6 +91,14 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     @Override

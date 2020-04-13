@@ -25,9 +25,9 @@ public class ProductDiscountValidationRule implements ProductValidationRule {
         if (product.getDiscount().intValue() > 100 || product.getDiscount().intValue() < 0) {
             throw new ProductValidationException("Discount should be not more than 100 and not less than 0");
         }
-        if (product.getPrice().intValue() < 20) {
-            product.setDiscount(BigDecimal.ZERO);
-            throw new ProductValidationException("If price < 20, then discount is 0");
-        }
+//        if (product.getPrice().intValue() < 20) {
+//            product.setDiscount(BigDecimal.ZERO);
+//            throw new ProductValidationException("If price < 20, then discount is 0");
+//        }
     }
 }

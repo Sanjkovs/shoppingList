@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Component
 @Profile("inmemory")
-public class ProductRepository implements ProductRepositoryInterface {
+public class ProductInMemoryRepository implements ProductRepositoryInterface {
 
     private Map<Long, Product> productRepository = new HashMap<Long, Product>();
     private Long productIdSequence = 0L;

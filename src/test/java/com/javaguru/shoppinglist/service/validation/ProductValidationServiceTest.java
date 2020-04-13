@@ -1,7 +1,7 @@
 package com.javaguru.shoppinglist.service.validation;
 
 import com.javaguru.shoppinglist.domain.Product;
-import com.javaguru.shoppinglist.repository.ProductRepository;
+import com.javaguru.shoppinglist.repository.ProductInMemoryRepository;
 import com.javaguru.shoppinglist.service.validation.rules.ProductPriceValidationRule;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 public class ProductValidationServiceTest {
 
-    private ProductRepository repository;
+    private ProductInMemoryRepository repository;
 
     private ProductValidationService service;
 
@@ -19,7 +19,7 @@ public class ProductValidationServiceTest {
 
     @Before
     public void setup() {
-        repository = Mockito.mock(ProductRepository.class);
+        repository = Mockito.mock(ProductInMemoryRepository.class);
 //        service = new ProductValidationService(repository, validationRule);
     }
 
