@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "product")
+@Table(name = "product", schema = "dbproductlist")
 public class Product {
 
     @Id

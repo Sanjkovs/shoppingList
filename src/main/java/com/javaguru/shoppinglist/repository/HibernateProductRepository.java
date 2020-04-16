@@ -17,7 +17,7 @@ public class HibernateProductRepository implements ProductRepositoryInterface {
 
     private final SessionFactory sessionFactory;
 
-//    @Autowired
+    @Autowired
     public HibernateProductRepository(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
@@ -48,9 +48,12 @@ public class HibernateProductRepository implements ProductRepositoryInterface {
 
     @Override
     public boolean existsByName(String name) {
-        String query = "SELECT" +
-                " IF (count(*) > 0, 1, 0) " +
-                " FROM PRODUCT WHERE name = '" + name + "'";
+        String query = "SELECT case when count(*) > 0 " +
+                " then true else false end " +
+                " FROM Product t WHERE t.name='" + name + "'";
+//        String query = "SELECT" +
+//                " IF(count(*) > 0, 1, 0) " +
+//                " FROM Product WHERE name='" + name + "'";
         return (boolean) sessionFactory.getCurrentSession().createQuery(query)
                 .setMaxResults(1)
                 .uniqueResult();

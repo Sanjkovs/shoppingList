@@ -27,13 +27,17 @@ public class DBProductRepository implements ProductRepositoryInterface{
 
     @Override
     public Product insert(Product product) {
-        String query = "insert into PRODUCT (name, price, category, discount, description, id) values (?,?,?,?,?,?)";
+        String query = "insert into Product (name, price, category, discount, description) values (?, ?, ?, ?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         jdbcTemplate.update(connection ->  {
-            PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = connection
+                    .prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, product.getName());
-            ps.setString(2,product.getDescription());
+            ps.setBigDecimal(2, product.getPrice());
+            ps.setString(3, product.getCategory());
+            ps.setBigDecimal(4, product.getDiscount());
+            ps.setString(5, product.getDescription());
             return ps;
         }, keyHolder);
         product.setId(keyHolder.getKey().longValue());
@@ -47,8 +51,9 @@ public class DBProductRepository implements ProductRepositoryInterface{
 
     @Override
     public Optional<Product> findProductById(Long id) {
-        String query = "select * from PRODUCT where id = ?";
+        String query = "select * from Product where id = ?";
         List<Product> products = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(Product.class), id);
+
         if (!products.isEmpty())
             return Optional.ofNullable(products.get(0));
 
@@ -61,7 +66,7 @@ public class DBProductRepository implements ProductRepositoryInterface{
         String query = "SELECT" +
                         " CASE WHEN count(*) > 0 " +
                         " THEN true ELSE false END " +
-                        " FROM PRODUCT WHERE name = ?";
+                        " FROM Product WHERE name = ?";
         return jdbcTemplate.queryForObject(query, Boolean.class, name);
     }
 

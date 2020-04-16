@@ -8,6 +8,9 @@ maven-4.0.0.xsd">
     <version>0.0.1-SNAPSHOT</version>
     <name>todo-list</name>
     <description>JavaGuru Java 2 course demo project</description>
+
+    <packaging>war</packaging>
+
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -45,13 +48,13 @@ maven-4.0.0.xsd">
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.2.3.RELEASE</version>
+            <version>5.2.5.RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>5.2.3.RELEASE</version>
+            <version>5.2.5.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -114,6 +117,12 @@ maven-4.0.0.xsd">
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>4.3.22.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.7</version>
         </dependency>
 
         <dependency>

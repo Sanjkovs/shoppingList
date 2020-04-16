@@ -43,12 +43,9 @@ public class CreateProductAction implements Action {
         product.setCategory(category);
         product.setDescription(description);
 
-        Long id = productService.createProduct(product);
-        System.out.println("ID: " + id);
-
         try {
-            productService.createProduct(product);
-            System.out.println("Responce: ");
+            Long response = productService.createProduct(product);
+            System.out.println("Response: " + response);
         } catch (ProductValidationException e) {
             System.out.println(e.getMessage());
         }

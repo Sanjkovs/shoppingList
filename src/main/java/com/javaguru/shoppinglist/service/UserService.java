@@ -2,7 +2,6 @@ package com.javaguru.shoppinglist.service;
 
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.domain.User;
-import com.javaguru.shoppinglist.repository.HibernateProductRepository;
 import com.javaguru.shoppinglist.repository.HibernateUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,7 +19,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-//    @Transactional
+    @Transactional
     public Long createUser(User user) {
         return userRepository.save(user);
     }
@@ -30,7 +29,7 @@ public class UserService {
                 .orElseThrow(() -> new NoSuchElementException("User not found, id: " + id));
     }
 
-    public void addProductToUser(Long userId, Product product){
+    public void addProductToUser(Long userId, Product product) {
         User user = findUserById(userId);
         user.getProducts().add(product);
         userRepository.update(user);

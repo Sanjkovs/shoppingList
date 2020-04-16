@@ -1,13 +1,27 @@
 package com.javaguru.shoppinglist.web;
 
-import java.io.IOException;
+        import javax.servlet.ServletException;
+        import javax.servlet.http.HttpServlet;
+        import javax.servlet.http.HttpServletRequest;
+        import javax.servlet.http.HttpServletResponse;
+        import java.io.IOException;
+        import java.io.PrintWriter;
 
-public class HelloServlet extends javax.servlet.http.HttpServlet {
-    protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+public class HelloServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response) throws ServletException, IOException {
+
+        String param = request.getParameter("username");
+
+        response.setContentType("text/html");
+
+        PrintWriter out = response.getWriter();
+        out.println("<h1>" + "Hello, World from JAVA!" + "/h1");
+        out.println("<h1>" + "param-username" + param + "/h1");
+
 
     }
 
-    protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-
-    }
 }

@@ -1,7 +1,6 @@
 package com.javaguru.shoppinglist.service.validation.rules;
 
 import com.javaguru.shoppinglist.domain.Product;
-import com.javaguru.shoppinglist.repository.ProductInMemoryRepository;
 import com.javaguru.shoppinglist.repository.ProductRepositoryInterface;
 import com.javaguru.shoppinglist.service.validation.ProductValidationException;
 import com.javaguru.shoppinglist.service.validation.ProductValidationRule;
@@ -22,7 +21,7 @@ public class ProductUniqueNameValidationRule implements ProductValidationRule {
     public void validate(Product product) {
         checkNotNull(product);
         if(repository.existsByName(product.getName())){
-            throw new ProductValidationException("Task name must be unique.");
+            throw new ProductValidationException("Product name must be unique.");
         }
     }
 }
