@@ -1,0 +1,19 @@
+# Get product by id
+GET http://localhost:8080/products/1007
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-04-16T070015.200.json
+
+
+### Send POST request with json body
+POST http://localhost:8080/products
+Content-Type: application/json
+
+{
+  "name": "game",
+  "price": "1000",
+  "category": "none",
+  "discount": "0",
+  "description": "none"
+}

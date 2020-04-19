@@ -21,6 +21,7 @@ public class User {
 //    @OneToMany(fetch = FetchType.LAZY)
 //    @JoinColumn (name = "user_id")
 //    private Set<Product> products;
+
     @ManyToMany(
             cascade = {CascadeType.ALL},
             fetch = FetchType.EAGER)
