@@ -2,6 +2,7 @@ package com.javaguru.shoppinglist.service.validation;
 
 import com.javaguru.shoppinglist.domain.Product;
 
+import com.javaguru.shoppinglist.dto.ProductDTO;
 import com.javaguru.shoppinglist.repository.ProductRepositoryInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,7 +23,7 @@ public class ProductValidationService {
         this.validationRules = validationRules;
 
     }
-    public void validate (Product product){
+    public void validate (ProductDTO product){
         validationRules.forEach(s -> s.validate(product));
     }
 

@@ -1,12 +1,13 @@
 package com.javaguru.shoppinglist.service.validation.rules;
 
 import com.javaguru.shoppinglist.domain.Product;
+import com.javaguru.shoppinglist.dto.ProductDTO;
 import com.javaguru.shoppinglist.service.validation.ProductValidationException;
 import com.javaguru.shoppinglist.service.validation.ProductValidationRule;
 
 public class ProductNameValidationRule implements ProductValidationRule {
     @Override
-    public void validate(Product product) {
+    public void validate(ProductDTO product) {
 //        ProductRepository repository = new ProductRepository();
         checkNotNull(product);
         if (product.getName() == null || product.getName().trim().length() == 0 ) {

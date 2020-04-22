@@ -1,11 +1,19 @@
 package com.javaguru.shoppinglist.dto;
 
 import com.javaguru.shoppinglist.domain.Product;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.math.BigDecimal;
 
 public class ProductDTO {
+
+    @NotNull (groups = {Update.class})
+    @Null (groups = {Create.class})
     private Long id;
+
+    @NotEmpty(groups = {Update.class, Create.class}, message = "Name must not be blank")
     private String name;
     private BigDecimal price;
     private String category;
@@ -81,4 +89,7 @@ public class ProductDTO {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public interface Update {}
+    public interface Create {}
 }

@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface ProductRepositoryInterface {
 
-    Product insert(Product product);
+    Long save(Product product);
 
     void delete(Product product);
 

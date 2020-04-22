@@ -1,6 +1,7 @@
 package com.javaguru.shoppinglist.service.validation.rules;
 
 import com.javaguru.shoppinglist.domain.Product;
+import com.javaguru.shoppinglist.dto.ProductDTO;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ public class ProductPriceValidationRuleTest {
     @Test
     public void testPriceValidation (){
         ProductPriceValidationRule rule = new ProductPriceValidationRule ();
-        Product product = new Product();
+        ProductDTO product = new ProductDTO();
         product.setPrice(BigDecimal.valueOf(-10));
         try {
             rule.validate(product);

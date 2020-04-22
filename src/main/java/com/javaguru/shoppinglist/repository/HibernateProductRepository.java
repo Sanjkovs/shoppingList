@@ -24,9 +24,9 @@ public class HibernateProductRepository implements ProductRepositoryInterface {
 
 
     @Override
-    public Product insert(Product product) {
+    public Long save(Product product) {
         sessionFactory.getCurrentSession().save(product);
-        return product;
+        return product.getId();
     }
 
     public void update (Product product){
