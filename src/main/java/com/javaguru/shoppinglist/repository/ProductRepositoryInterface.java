@@ -2,11 +2,14 @@ package com.javaguru.shoppinglist.repository;
 
 import com.javaguru.shoppinglist.domain.Product;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepositoryInterface {
 
     Long save(Product product);
+
+    void update(Product product);
 
     void delete(Product product);
 
@@ -15,4 +18,6 @@ public interface ProductRepositoryInterface {
     boolean existsByName(String name);
 
     Optional<Product> findProductByName(String name);
+
+    List<Product> findAll();
 }

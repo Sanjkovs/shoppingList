@@ -10,15 +10,14 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
-@Component
 public class ProductDiscountValidationRule implements ProductValidationRule {
 
-    private final ProductRepositoryInterface repository;
+//    private final ProductRepositoryInterface repository;
 
-    @Autowired
-    public ProductDiscountValidationRule(ProductRepositoryInterface repository){
-        this.repository = repository;
-    }
+//    @Autowired
+//    public ProductDiscountValidationRule(ProductRepositoryInterface repository){
+//        this.repository = repository;
+//    }
 
     @Override
     public void validate(ProductDTO product) {

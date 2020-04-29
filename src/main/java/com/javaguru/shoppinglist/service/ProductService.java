@@ -7,7 +7,12 @@ import com.javaguru.shoppinglist.repository.ProductRepositoryInterface;
 import com.javaguru.shoppinglist.service.validation.ProductValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class ProductService {
@@ -34,8 +39,31 @@ public class ProductService {
 
     public Product findProductById(Long id) {
         return repository.findProductById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Product not found, id: " + id));
+                .orElseThrow(() -> new NoSuchElementException("Product not found, id: " + id));
 
 
+    }
+
+    public void updateProduct(ProductDTO productDTO) {
+        validationService.validate(productDTO);
+        Product product = productConverter.convert(productDTO);
+        repository.update(product);
+    }
+
+    public void deleteProduct(Long id) {
+        repository.findProductById(id)
+                .ifPresent(repository::delete);
+    }
+
+    public ProductDTO findProductByName(String name) {
+        return repository.findProductByName(name)
+                .map(productConverter::convert)
+                .orElseThrow(() -> new NoSuchElementException("Product not found, name: " + name));
+    }
+
+    public List<ProductDTO> findAll() {
+        return repository.findAll().stream()
+                .map(productConverter::convert)
+                .collect(Collectors.toList());
     }
 }

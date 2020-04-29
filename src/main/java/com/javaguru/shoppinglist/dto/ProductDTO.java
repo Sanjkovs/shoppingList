@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 
 public class ProductDTO {
 
-    @NotNull (groups = {Update.class})
-    @Null (groups = {Create.class})
+    @NotNull (groups = {Update.class}, message = "ID must not be null")
+    @Null (groups = {Create.class},  message = "Please do not provide ID on create")
     private Long id;
 
     @NotEmpty(groups = {Update.class, Create.class}, message = "Name must not be blank")

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -30,7 +31,7 @@ public class HibernateProductRepository implements ProductRepositoryInterface {
     }
 
     public void update (Product product){
-        sessionFactory.getCurrentSession().update(product);
+        sessionFactory.getCurrentSession().saveOrUpdate(product);
     }
 
     @Override
@@ -66,4 +67,11 @@ public class HibernateProductRepository implements ProductRepositoryInterface {
                 .uniqueResult();
         return Optional.ofNullable(product);
     }
+
+    @Override
+    public List<Product> findAll() {
+        return sessionFactory.getCurrentSession().createCriteria(Product.class).list();
+    }
+
+
 }

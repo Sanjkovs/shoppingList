@@ -39,7 +39,7 @@ public class RestControllerErrorHandler {
 //        {
 //            timeStamp:
 //            error: "Invalid payload",
-//            errors: []
+//            errors: ["Name must be not empty"]
 //        }
         return body;
     }
